@@ -12,7 +12,7 @@ export async function getAllTutorial() {
 
 // CREATE
 export async function postTutorial(title: string, description: string) {
-  axios({
+  const response = await axios<Tutorial>({
     method: "post",
     url: "http://localhost:8080/api/tutorial",
     data: {
@@ -20,27 +20,35 @@ export async function postTutorial(title: string, description: string) {
       description: description,
     },
   });
+
+  return response.data;
 }
 
 // UPDATE
 export async function UpdateTutorial(id: string, data: string[]) {
-  axios({
+  const response = await axios<Tutorial>({
     method: "patch",
     url: "http://localhost:8080/api/tutorial",
-    data: { id: id, data: data },
+    data: {
+      title: id,
+      description: data,
+    },
   });
+
+  return response.data;
 }
 
 // DELETE
-export async function deleteTutorial(title: string, description: string) {
-  axios({
+export async function deleteTutorial(id: string) {
+  const response = await axios<Tutorial>({
     method: "delete",
     url: "http://localhost:8080/api/tutorial",
     data: {
-      title: title,
-      description: description,
+      id: id,
     },
   });
+
+  return response.data;
 }
 
 export interface Tutorial {

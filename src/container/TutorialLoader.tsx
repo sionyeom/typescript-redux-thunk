@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/modules";
-import { getTutorialAllThunk } from "@/modules/tutorial";
+import { getTutorialAllThunk, PostTutorialThunk } from "@/modules/tutorial";
 import TutorialInfo from "@/components/tutorial/TutorialInfo";
 type Props = {};
 
@@ -14,9 +14,13 @@ const TutorialLoader = (props: Props) => {
   useEffect(() => {
     dispatch(getTutorialAllThunk());
   }, []);
-
+  const handleSumbit = (e: any) => {
+    dispatch(PostTutorialThunk("123", "내용"));
+    location.reload();
+  };
   return (
     <>
+      <button onClick={handleSumbit}>테스트</button>
       {loading && console.log("로딩중!")}
       {error && console.log(0)}
       {data &&
