@@ -51,6 +51,7 @@ export async function deleteTutorial(id: string) {
   return response.data;
 }
 
+// 각 CRUD에 맞는 타입 인터페이스를 작성할 필요가 있음
 export interface Tutorial {
   _id: string;
   title: string;

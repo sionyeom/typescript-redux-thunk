@@ -14,10 +14,13 @@ const TutorialLoader = (props: Props) => {
   useEffect(() => {
     dispatch(getTutorialAllThunk());
   }, []);
+
   const handleSumbit = (e: any) => {
     dispatch(PostTutorialThunk("123", "내용"));
+    // 페이지 이동
     location.reload();
   };
+
   return (
     <>
       <button onClick={handleSumbit}>테스트</button>
