@@ -8,6 +8,7 @@ export async function getUserProfile(username: string) {
   return response.data;
 }
 
+// 데이터의 속성 받아오기
 export interface GithubProfile {
   login: string;
   id: number;

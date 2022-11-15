@@ -3,7 +3,7 @@ import { RootState } from "..";
 import { GithubAction } from "./types";
 import { getUserProfile } from "../../api/github";
 import { getUserProfileAsync } from "./actions";
-
+import createAsyncThunk from "@/lib/createAsyncThunk";
 // ThunkAction 의 Generics 에는 다음 값들을 순서대로 넣어줍니다.
 /*
   1. thunk 함수에서 반환하는 값의 타입
@@ -20,8 +20,8 @@ export function getUserProfileThunk(
     try {
       const userProfile = await getUserProfile(username);
       dispatch(success(userProfile));
-    } catch (e) {
-      //   dispatch(failure(e));
+    } catch (err) {
+      // dispatch(failure(err));
     }
   };
 }

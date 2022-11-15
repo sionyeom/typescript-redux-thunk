@@ -1,7 +1,8 @@
 import TodoApp from "./container/TodoApp";
-
+import GithubProfileLoader from "./container/GithubProfileLoader";
+import TutorialLoader from "./container/TutorialLoader";
 const App = () => {
-  return <TodoApp />;
+  return <TutorialLoader />;
 };
 
 export default App;
