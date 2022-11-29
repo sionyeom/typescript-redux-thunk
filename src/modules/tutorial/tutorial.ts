@@ -4,50 +4,39 @@ import ApiUtils from "@/utils/api/axiosHelper";
 const apiName = {
   getTutorial: "api/tutorial",
   postTutorial: "api/tutorial",
+  updateTutorial: "api/tutorial",
+  deleteTutorial: "api/tutorial",
 };
 
 // READ
 export async function getAllTutorial() {
   const res = await ApiUtils.fetch<undefined, Tutorial>(apiName.getTutorial);
-
   return res;
 }
 
 // CREATE
 export async function postTutorial(title: string, description: string) {
-  const res = await ApiUtils.post<InputType, any>(apiName.postTutorial, {
+  const res = await ApiUtils.post<CreateInputType, any>(apiName.postTutorial, {
     title: title,
     description: description,
   });
-
   return res;
 }
 
 // UPDATE
-export async function updateTutorial(id: string, data: string[]) {
-  const response = await axios<Tutorial>({
-    method: "patch",
-    url: "http://localhost:8080/api/tutorial",
-    data: {
-      title: id,
-      description: data,
-    },
-  });
-
-  return response.data;
+export async function updateTutorial(id: string, data: UpdateInputType) {
+  const res = await ApiUtils.patch<UpdateInputType, any>(
+    `${apiName.updateTutorial}/${id}`,
+    data
+  );
+  return res;
 }
 
 // DELETE
+// 삭제 각 status에 따른 ReqType,ResType 지정 필요
 export async function deleteTutorial(id: string) {
-  const response = await axios<Tutorial>({
-    method: "delete",
-    url: "http://localhost:8080/api/tutorial",
-    data: {
-      id: id,
-    },
-  });
-
-  return response.data;
+  const res = await ApiUtils.remove<any>(`${apiName.updateTutorial}/${id}`);
+  return res;
 }
 
 // 각 CRUD에 맞는 타입 인터페이스를 작성할 필요가 있음
@@ -62,7 +51,12 @@ export interface Tutorial {
   [key: string]: any;
 }
 
-export interface InputType {
+export interface CreateInputType {
+  title: string;
+  description: string;
+}
+
+export interface UpdateInputType {
   title: string;
   description: string;
 }

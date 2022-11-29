@@ -31,3 +31,13 @@ export const updateTutorialAllAsync = createAsyncAction(
   UPDATE_TUTORIAL_SUCCESS,
   UPDATE_TUTORIAL_ERROR
 )<undefined, Tutorial, AxiosError>();
+
+export const DELETE_TUTORIAL = "tutorial/DELETE_TUTORIAL";
+export const DELETE_TUTORIAL_SUCCESS = "tutorial/DELETE_TUTORIAL_SUCCESS";
+export const DELETE_TUTORIAL_ERROR = "tutorial/DELETE_TUTORIAL_ERROR";
+
+export const deleteTutorialAllAsync = createAsyncAction(
+  DELETE_TUTORIAL,
+  DELETE_TUTORIAL_SUCCESS,
+  DELETE_TUTORIAL_ERROR
+)<undefined, Tutorial, AxiosError>();

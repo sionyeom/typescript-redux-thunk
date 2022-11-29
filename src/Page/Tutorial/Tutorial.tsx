@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/modules";
-import { getTutorialAllThunk, PostTutorialThunk } from "@/modules/tutorial";
+import {
+  getTutorialAllThunk,
+  PostTutorialThunk,
+  UpdateTutorialThunk,
+  DeleteTutorialThunk,
+} from "@/modules/tutorial";
 import TutorialInfo from "./components/TutorialInfo";
 type Props = {};
 
@@ -15,17 +20,34 @@ const Tutorial = (props: Props) => {
     dispatch(getTutorialAllThunk());
   }, []);
 
+  // post
   const handleSumbit = (e: any) => {
     dispatch(PostTutorialThunk("123", "내용"));
     // 페이지 이동
     location.reload();
   };
 
+  // update
+  const handleUpdate = (e: any) => {
+    let data = {
+      title: "updatedTitle111",
+      description: "updatedDescription",
+    };
+    // id, data = {title: title,description : description}
+    dispatch(UpdateTutorialThunk("63859be5d04705f508024073", data));
+    location.reload();
+  };
+
+  // delete
+  const handleDelete = (e: any) => {
+    dispatch(DeleteTutorialThunk("63859be5d04705f508024073"));
+  };
+
   return (
     <>
       <button onClick={handleSumbit}>테스트</button>
-      <button onClick={handleSumbit}>수정 테스트</button>
-      <button onClick={handleSumbit}>삭제 테스트</button>
+      <button onClick={handleUpdate}>수정 테스트</button>
+      <button onClick={handleDelete}>삭제 테스트</button>
 
       {loading && console.log("로딩중!")}
       {error && console.log(0)}

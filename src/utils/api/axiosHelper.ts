@@ -12,10 +12,12 @@ export const axiosInstance = axios.create({
 
 // 응답 인터센터 추가
 axiosInstance.interceptors.response.use(
-  (response) => {
-    const res = response.data;
-    return res;
+  // data = res.data
+  (res) => {
+    const data = res.data;
+    return data;
   },
+  // 에러 처리
   (error) => {
     console.log(error);
     return Promise.reject(error);
@@ -40,10 +42,10 @@ async function post<ReqType, ResType>(
 
 async function put<ReqType, ResType>(
   url: string,
-  params?: ReqType
+  data?: ReqType
 ): Promise<ResType> {
   // 백엔드 단에서 header 요청시 포함하여 전달
-  return axiosInstance.put(url, { ...params });
+  return axiosInstance.put(url, { ...data });
 }
 
 async function patch<ReqType, ResType>(
@@ -54,12 +56,9 @@ async function patch<ReqType, ResType>(
   return axiosInstance.patch(url, { ...data });
 }
 
-async function remove<ReqType, ResType>(
-  url: string,
-  params?: ReqType
-): Promise<ResType> {
+async function remove<ResType>(url: string): Promise<ResType> {
   // 백엔드 단에서 header 요청시 포함하여 전달
-  return axiosInstance.delete(url, { ...params });
+  return axiosInstance.delete(url);
 }
 
 const ApiUtils = { post, fetch, put, patch, remove };

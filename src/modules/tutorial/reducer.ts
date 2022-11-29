@@ -10,6 +10,9 @@ import {
   UPDATE_TUTORIAL,
   UPDATE_TUTORIAL_SUCCESS,
   UPDATE_TUTORIAL_ERROR,
+  DELETE_TUTORIAL,
+  DELETE_TUTORIAL_SUCCESS,
+  DELETE_TUTORIAL_ERROR,
 } from "./actions";
 
 const initialState: TutorialState = {
@@ -74,6 +77,26 @@ const tutorialAll = createReducer<TutorialState, TutorialAction>(initialState, {
     },
   }),
   [UPDATE_TUTORIAL_ERROR]: (state, aciton) => ({
+    ...state,
+    tutorialAll: {
+      loading: false,
+      error: aciton.payload,
+      data: null,
+    },
+  }),
+  [DELETE_TUTORIAL]: (state) => ({
+    ...state,
+    tutorialAll: { loading: true, error: null, data: null },
+  }),
+  [DELETE_TUTORIAL_SUCCESS]: (state, aciton) => ({
+    ...state,
+    tutorialAll: {
+      loading: false,
+      error: null,
+      data: aciton.payload,
+    },
+  }),
+  [DELETE_TUTORIAL_ERROR]: (state, aciton) => ({
     ...state,
     tutorialAll: {
       loading: false,
