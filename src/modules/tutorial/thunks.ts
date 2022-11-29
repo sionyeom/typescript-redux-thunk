@@ -1,7 +1,7 @@
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "..";
 import { TutorialAction } from "./types";
-import { getAllTutorial, postTutorial } from "../../api/tutorial";
+import { getAllTutorial, postTutorial } from "./tutorial";
 import { getTutorialAllAsync, postTutorialAllAsync } from "./actions";
 
 export function getTutorialAllThunk(): ThunkAction<

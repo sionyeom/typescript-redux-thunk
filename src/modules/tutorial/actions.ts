@@ -1,5 +1,5 @@
 import { createAsyncAction } from "typesafe-actions";
-import { Tutorial } from "../../api/tutorial";
+import { Tutorial } from "./tutorial";
 import { AxiosError } from "axios";
 
 export const GET_TUTORIAL_ALL = "tutorial/GET_TUTORIAL_ALL";

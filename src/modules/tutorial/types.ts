@@ -1,6 +1,6 @@
 import * as actions from "./actions";
 import { ActionType } from "typesafe-actions";
-import { Tutorial } from "@/api/tutorial";
+import { Tutorial } from "@/modules/tutorial/tutorial";
 
 export type TutorialAction = ActionType<typeof actions>;
 

@@ -1,27 +1,26 @@
 import axios from "axios";
+import ApiUtils from "@/utils/api/axiosHelper";
+
+const apiName = {
+  getTutorial: "api/tutorial",
+  postTutorial: "api/tutorial",
+};
 
 // READ
 export async function getAllTutorial() {
-  const response = await axios.get<Tutorial>(
-    `http://localhost:8080/api/tutorial`
-  );
-  console.log(response.data);
+  const res = await ApiUtils.fetch<undefined, Tutorial>(apiName.getTutorial);
 
-  return response.data;
+  return res;
 }
 
 // CREATE
 export async function postTutorial(title: string, description: string) {
-  const response = await axios<Tutorial>({
-    method: "post",
-    url: "http://localhost:8080/api/tutorial",
-    data: {
-      title: title,
-      description: description,
-    },
+  const res = await ApiUtils.post<InputType, any>(apiName.postTutorial, {
+    title: title,
+    description: description,
   });
 
-  return response.data;
+  return res;
 }
 
 // UPDATE
@@ -61,4 +60,9 @@ export interface Tutorial {
   updatedAt: string;
   __v: number;
   [key: string]: any;
+}
+
+export interface InputType {
+  title: string;
+  description: string;
 }
