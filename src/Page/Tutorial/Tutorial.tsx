@@ -24,6 +24,9 @@ const Tutorial = (props: Props) => {
   return (
     <>
       <button onClick={handleSumbit}>테스트</button>
+      <button onClick={handleSumbit}>수정 테스트</button>
+      <button onClick={handleSumbit}>삭제 테스트</button>
+
       {loading && console.log("로딩중!")}
       {error && console.log(0)}
       {data &&
