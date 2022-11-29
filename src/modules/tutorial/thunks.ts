@@ -2,7 +2,7 @@ import { ThunkAction } from "redux-thunk";
 import { RootState } from "..";
 import { TutorialAction } from "./types";
 import { getAllTutorial, postTutorial } from "../../api/tutorial";
-import { getTutorialAllAsync } from "./actions";
+import { getTutorialAllAsync, postTutorialAllAsync } from "./actions";
 
 export function getTutorialAllThunk(): ThunkAction<
   void,
@@ -25,7 +25,7 @@ export function PostTutorialThunk(
   description: string
 ): ThunkAction<void, RootState, null, TutorialAction> {
   return async (dispatch) => {
-    const { request, success, failure } = getTutorialAllAsync;
+    const { request, success, failure } = postTutorialAllAsync;
     dispatch(request());
     try {
       const tutorialPost = await postTutorial(title, description);
