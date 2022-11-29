@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "NanumSquareRound-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://fonts.animaapp.com/NanumSquareRound-Regular")
+    format("truetype");
+}
+
+body {
+  font-family: "NanumSquareRound-Regular";
+}
