@@ -7,6 +7,9 @@ import {
   POST_TUTORIAL,
   POST_TUTORIAL_SUCCESS,
   POST_TUTORIAL_ERROR,
+  UPDATE_TUTORIAL,
+  UPDATE_TUTORIAL_SUCCESS,
+  UPDATE_TUTORIAL_ERROR,
 } from "./actions";
 
 const initialState: TutorialState = {
@@ -51,6 +54,26 @@ const tutorialAll = createReducer<TutorialState, TutorialAction>(initialState, {
     },
   }),
   [POST_TUTORIAL_ERROR]: (state, aciton) => ({
+    ...state,
+    tutorialAll: {
+      loading: false,
+      error: aciton.payload,
+      data: null,
+    },
+  }),
+  [UPDATE_TUTORIAL]: (state) => ({
+    ...state,
+    tutorialAll: { loading: true, error: null, data: null },
+  }),
+  [UPDATE_TUTORIAL_SUCCESS]: (state, aciton) => ({
+    ...state,
+    tutorialAll: {
+      loading: false,
+      error: null,
+      data: aciton.payload,
+    },
+  }),
+  [UPDATE_TUTORIAL_ERROR]: (state, aciton) => ({
     ...state,
     tutorialAll: {
       loading: false,

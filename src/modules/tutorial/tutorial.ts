@@ -24,7 +24,7 @@ export async function postTutorial(title: string, description: string) {
 }
 
 // UPDATE
-export async function UpdateTutorial(id: string, data: string[]) {
+export async function updateTutorial(id: string, data: string[]) {
   const response = await axios<Tutorial>({
     method: "patch",
     url: "http://localhost:8080/api/tutorial",

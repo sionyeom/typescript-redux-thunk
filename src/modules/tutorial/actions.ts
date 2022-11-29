@@ -21,3 +21,13 @@ export const postTutorialAllAsync = createAsyncAction(
   POST_TUTORIAL_SUCCESS,
   POST_TUTORIAL_ERROR
 )<undefined, Tutorial, AxiosError>();
+
+export const UPDATE_TUTORIAL = "tutorial/UPDATE_TUTORIAL";
+export const UPDATE_TUTORIAL_SUCCESS = "tutorial/UPDATE_TUTORIAL_SUCCESS";
+export const UPDATE_TUTORIAL_ERROR = "tutorial/UPDATE_TUTORIAL_ERROR";
+
+export const updateTutorialAllAsync = createAsyncAction(
+  UPDATE_TUTORIAL,
+  UPDATE_TUTORIAL_SUCCESS,
+  UPDATE_TUTORIAL_ERROR
+)<undefined, Tutorial, AxiosError>();
