@@ -34,8 +34,6 @@ async function post<ReqType, ResType>(
   url: string,
   data?: ReqType
 ): Promise<ResType> {
-  console.log({ ...data });
-
   // 백엔드 단에서 header 요청시 포함하여 전달
   return axiosInstance.post(url, { ...data });
 }
@@ -50,10 +48,10 @@ async function put<ReqType, ResType>(
 
 async function patch<ReqType, ResType>(
   url: string,
-  params?: ReqType
+  data?: ReqType
 ): Promise<ResType> {
   // 백엔드 단에서 header 요청시 포함하여 전달
-  return axiosInstance.patch(url, { ...params });
+  return axiosInstance.patch(url, { ...data });
 }
 
 async function remove<ReqType, ResType>(
@@ -63,6 +61,7 @@ async function remove<ReqType, ResType>(
   // 백엔드 단에서 header 요청시 포함하여 전달
   return axiosInstance.delete(url, { ...params });
 }
+
 const ApiUtils = { post, fetch, put, patch, remove };
 
 export default ApiUtils;
