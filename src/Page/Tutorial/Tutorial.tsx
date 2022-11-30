@@ -8,12 +8,16 @@ import {
   DeleteTutorialThunk,
 } from "@/modules/tutorial";
 import TutorialInfo from "./components/TutorialInfo";
+import { useNavigate } from "react-router-dom";
+
 type Props = {};
 
 const Tutorial = (props: Props) => {
   const { data, loading, error } = useSelector(
     (state: RootState) => state.tutorial.tutorialAll
   );
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,7 +30,10 @@ const Tutorial = (props: Props) => {
     // 페이지 이동
     location.reload();
   };
-
+  const handle = (e: any) => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
   // update
   const handleUpdate = (e: any) => {
     let data = {
@@ -48,6 +55,7 @@ const Tutorial = (props: Props) => {
       <button onClick={handleSumbit}>테스트</button>
       <button onClick={handleUpdate}>수정 테스트</button>
       <button onClick={handleDelete}>삭제 테스트</button>
+      <button onClick={handle}>로그아웃</button>
 
       {loading && console.log("로딩중!")}
       {error && console.log(0)}
