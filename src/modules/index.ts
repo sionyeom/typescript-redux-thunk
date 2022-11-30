@@ -2,10 +2,12 @@ import { combineReducers } from "redux";
 import todos from "./todos";
 import github from "./github";
 import tutorial from "./tutorial";
+import Login from "./Login";
 const rootReducer = combineReducers({
   todos,
   github,
   tutorial,
+  Login,
 });
 
 // 루트 리듀서를 내보내주세요.
