@@ -14,6 +14,8 @@ export function postLoginAllThunk(
     dispatch(request());
     try {
       const login = await handleLogin(id, pw);
+      console.log(login);
+
       // success 발신
       dispatch(success(login));
       // success 성공 시

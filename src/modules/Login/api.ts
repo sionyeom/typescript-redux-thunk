@@ -5,9 +5,13 @@ const apiName = {
 };
 
 export async function handleLogin(id: string, pw: string) {
-  const res = await ApiUtils.post<LoginInputType, any>(apiName.handleLogin, {
-    id: id,
-    pw: pw,
-  });
+  const res = await ApiUtils.post<LoginInputType, any>(
+    apiName.handleLogin,
+    {
+      id: id,
+      pw: pw,
+    },
+    { isAuth: false }
+  );
   return res;
 }
