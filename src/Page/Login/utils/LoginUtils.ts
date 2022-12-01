@@ -19,11 +19,7 @@ export default function LoginUtils(): Utils {
 
   const handleLogin = async () => {
     try {
-      dispatch(
-        postLoginAllThunk("yeom", "yeom").then((e: any) => {
-          console.log(e);
-        })
-      );
+      dispatch(postLoginAllThunk("yeom", "yeom"));
     } catch (e) {}
   };
 
