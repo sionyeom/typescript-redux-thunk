@@ -15,6 +15,7 @@ import {
   DELETE_TUTORIAL_ERROR,
 } from "./actions";
 
+// 데이터 호출 상태 정의
 const initialState: TutorialState = {
   tutorialAll: {
     loading: false,
@@ -23,9 +24,12 @@ const initialState: TutorialState = {
   },
 };
 
+// 액션에 대한 리듀서 작성
 const tutorialAll = createReducer<TutorialState, TutorialAction>(initialState, {
+  // Get 리듀서 작성
   [GET_TUTORIAL_ALL]: (state) => ({
     ...state,
+    // loading 체크 가능
     tutorialAll: { loading: true, error: null, data: null },
   }),
   [GET_TUTORIAL_SUCCESS]: (state, aciton) => ({
@@ -33,6 +37,7 @@ const tutorialAll = createReducer<TutorialState, TutorialAction>(initialState, {
     tutorialAll: {
       loading: false,
       error: null,
+      // 호출 성공시 data에 데이터 할당
       data: aciton.payload,
     },
   }),
@@ -40,10 +45,12 @@ const tutorialAll = createReducer<TutorialState, TutorialAction>(initialState, {
     ...state,
     tutorialAll: {
       loading: false,
+      // 에러 발생시 error에 에러내용 할당
       error: aciton.payload,
       data: null,
     },
   }),
+  // Post 리듀서 작성
   [POST_TUTORIAL]: (state) => ({
     ...state,
     tutorialAll: { loading: true, error: null, data: null },
@@ -64,6 +71,7 @@ const tutorialAll = createReducer<TutorialState, TutorialAction>(initialState, {
       data: null,
     },
   }),
+  // Update 리듀서 작성
   [UPDATE_TUTORIAL]: (state) => ({
     ...state,
     tutorialAll: { loading: true, error: null, data: null },
@@ -84,6 +92,7 @@ const tutorialAll = createReducer<TutorialState, TutorialAction>(initialState, {
       data: null,
     },
   }),
+  // Delete 리듀서 작성
   [DELETE_TUTORIAL]: (state) => ({
     ...state,
     tutorialAll: { loading: true, error: null, data: null },
