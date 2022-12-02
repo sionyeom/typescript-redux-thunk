@@ -51,10 +51,7 @@ const errorHandler = (error: AxiosError) => {
     return post<any, any>(RouterDefine.ERROR_EXPIRED_ACCESS_TOKEN, {
       refresh: getRefresh,
     }).then((res) => {
-            // 토큰 값 갱신
       // 토큰 값 갱신
-      // 토큰 값 갱신
-
       return localStorage.setItem("token", res);
     });
   } else if ((resError.status = 403)) {
