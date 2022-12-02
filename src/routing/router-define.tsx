@@ -1,7 +1,7 @@
 const RouterDefine = {
   // 페이지
-  HOME: "/",
-  Login: "/login",
+  LANDING_PAGE: "/",
+  LOGIN: "/login",
   MAIN_PAGE: "/main",
   // ERROR HANDLER
   ERROR_EXPIRED_ACCESS_TOKEN: "/auth/access",
